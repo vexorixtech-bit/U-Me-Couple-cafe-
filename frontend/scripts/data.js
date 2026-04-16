@@ -1,20 +1,18 @@
 // ============================================
-// VICKY RESTAURANT - DATA (From Database)
+// VICKY RESTAURANT - DATA (Supabase Direct)
 // ============================================
 
-const API_BASE = 'https://restaurant-project-qtrz.onrender.com/api';
+const SUPABASE_URL = 'https://ioflptnuwifbevsggete.supabase.co';
+const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImlvZmxwdG51d2lmYmV2c2dnZXRlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzYzMjgwNjcsImV4cCI6MjA5MTkwNDA2N30.TCAUT4AbzYIVX6ePEM7jGse2hw1DGsiTvSDRqfmquyU';
 
-// Menu Data
 let menuData = [];
 
-// Testimonials Data
 const testimonialsData = [
     { id: 1, text: 'The best vegan Indian food I have ever had! The Paneer Butter Masala was absolutely divine. And being open 24/7 is a game-changer for late-night cravings.', name: 'Priya Sharma', role: 'Food Blogger', image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150' },
     { id: 2, text: 'Finally a restaurant that understands authentic vegetarian cuisine! The Dal Makhani tastes exactly like my grandmother recipe. Absolutely love this place!', name: 'Raj Patel', role: 'Regular Customer', image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150' },
     { id: 3, text: 'I am not even vegan but the food here converted me! Everything is so flavorful and fresh. The 24/7 service is perfect for our night shift workers.', name: 'Sarah Johnson', role: 'Local Resident', image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150' },
 ];
 
-// Gallery Images
 const galleryImages = [
     'https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=800',
     'https://images.unsplash.com/photo-1567337710282-00832b415979?w=500',
@@ -24,35 +22,47 @@ const galleryImages = [
     'https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=500',
 ];
 
-// Fetch Menu from Database
 async function fetchMenuFromDB() {
     try {
-        const response = await fetch(`${API_BASE}/menu`);
-        const result = await response.json();
-        if (result.success) {
-            menuData = result.data;
-            // Trigger update if Menu component is loaded
-            window.dispatchEvent(new CustomEvent('menuUpdated', { detail: menuData }));
-        }
+        const response = await fetch(`${SUPABASE_URL}/rest/v1/menu?select=*&order=category,id`, {
+            headers: {
+                'apikey': SUPABASE_KEY,
+                'Authorization': `Bearer ${SUPABASE_KEY}`
+            }
+        });
+        const data = await response.json();
+        menuData = data;
+        window.dispatchEvent(new CustomEvent('menuUpdated', { detail: menuData }));
     } catch (error) {
-        // Static fallback menu data - DISABLED (using database menu)
+        console.error('Error fetching menu:', error);
         menuData = [];
-        // window.dispatchEvent(new CustomEvent('menuUpdated', { detail: menuData }));
     }
 }
 
-// Get Menu Data
 function getMenuData() {
     return menuData;
 }
 
-// Submit Reservation to Database
 async function submitReservation(data) {
     try {
-        const response = await fetch(`${API_BASE}/reservations`, {
+        const response = await fetch(`${SUPABASE_URL}/rest/v1/reservations`, {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(data)
+            headers: {
+                'apikey': SUPABASE_KEY,
+                'Authorization': `Bearer ${SUPABASE_KEY}`,
+                'Content-Type': 'application/json',
+                'Prefer': 'return=representation'
+            },
+            body: JSON.stringify({
+                name: data.name,
+                email: data.email,
+                phone: data.phone,
+                date: data.date,
+                time: data.time,
+                guests: data.guests,
+                message: data.message || '',
+                status: 'pending'
+            })
         });
         return await response.json();
     } catch (error) {
@@ -61,13 +71,23 @@ async function submitReservation(data) {
     }
 }
 
-// Submit Contact to Database
 async function submitContact(data) {
     try {
-        const response = await fetch(`${API_BASE}/contacts`, {
+        const response = await fetch(`${SUPABASE_URL}/rest/v1/contacts`, {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(data)
+            headers: {
+                'apikey': SUPABASE_KEY,
+                'Authorization': `Bearer ${SUPABASE_KEY}`,
+                'Content-Type': 'application/json',
+                'Prefer': 'return=representation'
+            },
+            body: JSON.stringify({
+                name: data.name,
+                email: data.email,
+                subject: data.subject || '',
+                message: data.message,
+                status: 'unread'
+            })
         });
         return await response.json();
     } catch (error) {
@@ -76,11 +96,9 @@ async function submitContact(data) {
     }
 }
 
-// Export for use in components
 window.menuData = menuData;
 window.testimonialsData = testimonialsData;
 window.galleryImages = galleryImages;
-window.API_BASE = API_BASE;
 window.fetchMenuFromDB = fetchMenuFromDB;
 window.getMenuData = getMenuData;
 window.submitReservation = submitReservation;
