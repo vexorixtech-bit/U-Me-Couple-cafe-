@@ -1,43 +1,40 @@
 // ============================================
-// VICKY RESTAURANT - RESERVATION MODEL
+// VICKY RESTAURANT - RESERVATION MODEL (PostgreSQL)
 // ============================================
 
 const { pool } = require('../config/database');
 
 const ReservationModel = {
-    // Get all reservations
     async getAll() {
         try {
-            const [rows] = await pool.query(
+            const result = await pool.query(
                 'SELECT * FROM reservations ORDER BY date DESC, time DESC'
             );
-            return rows;
+            return result.rows;
         } catch (error) {
             console.error('Error fetching reservations:', error);
             return [];
         }
     },
 
-    // Get reservation by ID
     async getById(id) {
         try {
-            const [rows] = await pool.query(
-                'SELECT * FROM reservations WHERE id = ?',
+            const result = await pool.query(
+                'SELECT * FROM reservations WHERE id = $1',
                 [id]
             );
-            return rows[0];
+            return result.rows[0];
         } catch (error) {
             console.error('Error fetching reservation:', error);
             return null;
         }
     },
 
-    // Create reservation
     async create(reservation) {
         try {
-            const [result] = await pool.query(
+            const result = await pool.query(
                 `INSERT INTO reservations (name, email, phone, date, time, guests, message, status) 
-                 VALUES (?, ?, ?, ?, ?, ?, ?, 'pending')`,
+                 VALUES ($1, $2, $3, $4, $5, $6, $7, 'pending') RETURNING *`,
                 [
                     reservation.name,
                     reservation.email,
@@ -48,35 +45,33 @@ const ReservationModel = {
                     reservation.message || ''
                 ]
             );
-            return { id: result.insertId, ...reservation, status: 'pending' };
+            return result.rows[0];
         } catch (error) {
             console.error('Error creating reservation:', error);
             return null;
         }
     },
 
-    // Update reservation status
     async updateStatus(id, status) {
         try {
-            const [result] = await pool.query(
-                'UPDATE reservations SET status = ? WHERE id = ?',
+            const result = await pool.query(
+                'UPDATE reservations SET status = $1 WHERE id = $2',
                 [status, id]
             );
-            return result.affectedRows > 0;
+            return result.rowCount > 0;
         } catch (error) {
             console.error('Error updating reservation status:', error);
             return false;
         }
     },
 
-    // Delete reservation
     async delete(id) {
         try {
-            const [result] = await pool.query(
-                'DELETE FROM reservations WHERE id = ?',
+            const result = await pool.query(
+                'DELETE FROM reservations WHERE id = $1',
                 [id]
             );
-            return result.affectedRows > 0;
+            return result.rowCount > 0;
         } catch (error) {
             console.error('Error deleting reservation:', error);
             return false;

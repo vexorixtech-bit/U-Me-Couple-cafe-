@@ -1,43 +1,40 @@
 // ============================================
-// VICKY RESTAURANT - CONTACT MODEL
+// VICKY RESTAURANT - CONTACT MODEL (PostgreSQL)
 // ============================================
 
 const { pool } = require('../config/database');
 
 const ContactModel = {
-    // Get all contacts
     async getAll() {
         try {
-            const [rows] = await pool.query(
+            const result = await pool.query(
                 'SELECT * FROM contacts ORDER BY created_at DESC'
             );
-            return rows;
+            return result.rows;
         } catch (error) {
             console.error('Error fetching contacts:', error);
             return [];
         }
     },
 
-    // Get contact by ID
     async getById(id) {
         try {
-            const [rows] = await pool.query(
-                'SELECT * FROM contacts WHERE id = ?',
+            const result = await pool.query(
+                'SELECT * FROM contacts WHERE id = $1',
                 [id]
             );
-            return rows[0];
+            return result.rows[0];
         } catch (error) {
             console.error('Error fetching contact:', error);
             return null;
         }
     },
 
-    // Create contact (message)
     async create(contact) {
         try {
-            const [result] = await pool.query(
+            const result = await pool.query(
                 `INSERT INTO contacts (name, email, subject, message, status) 
-                 VALUES (?, ?, ?, ?, 'unread')`,
+                 VALUES ($1, $2, $3, $4, 'unread') RETURNING *`,
                 [
                     contact.name,
                     contact.email,
@@ -45,35 +42,33 @@ const ContactModel = {
                     contact.message
                 ]
             );
-            return { id: result.insertId, ...contact, status: 'unread' };
+            return result.rows[0];
         } catch (error) {
             console.error('Error creating contact:', error);
             return null;
         }
     },
 
-    // Mark contact as read
     async markAsRead(id) {
         try {
-            const [result] = await pool.query(
-                'UPDATE contacts SET status = ? WHERE id = ?',
+            const result = await pool.query(
+                'UPDATE contacts SET status = $1 WHERE id = $2',
                 ['read', id]
             );
-            return result.affectedRows > 0;
+            return result.rowCount > 0;
         } catch (error) {
             console.error('Error marking contact as read:', error);
             return false;
         }
     },
 
-    // Delete contact
     async delete(id) {
         try {
-            const [result] = await pool.query(
-                'DELETE FROM contacts WHERE id = ?',
+            const result = await pool.query(
+                'DELETE FROM contacts WHERE id = $1',
                 [id]
             );
-            return result.affectedRows > 0;
+            return result.rowCount > 0;
         } catch (error) {
             console.error('Error deleting contact:', error);
             return false;

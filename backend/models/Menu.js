@@ -1,79 +1,73 @@
 // ============================================
-// VICKY RESTAURANT - MENU MODEL
+// VICKY RESTAURANT - MENU MODEL (PostgreSQL)
 // ============================================
 
 const { pool } = require('../config/database');
 
 const MenuModel = {
-    // Get all menu items
     async getAll() {
         try {
-            const [rows] = await pool.query('SELECT * FROM menu ORDER BY category, id');
-            return rows;
+            const result = await pool.query('SELECT * FROM menu ORDER BY category, id');
+            return result.rows;
         } catch (error) {
             console.error('Error fetching menu:', error);
             return [];
         }
     },
 
-    // Get menu by category
     async getByCategory(category) {
         try {
-            const [rows] = await pool.query(
-                'SELECT * FROM menu WHERE category = ? ORDER BY id',
+            const result = await pool.query(
+                'SELECT * FROM menu WHERE category = $1 ORDER BY id',
                 [category]
             );
-            return rows;
+            return result.rows;
         } catch (error) {
             console.error('Error fetching menu by category:', error);
             return [];
         }
     },
 
-    // Get single menu item
     async getById(id) {
         try {
-            const [rows] = await pool.query('SELECT * FROM menu WHERE id = ?', [id]);
-            return rows[0];
+            const result = await pool.query('SELECT * FROM menu WHERE id = $1', [id]);
+            return result.rows[0];
         } catch (error) {
             console.error('Error fetching menu item:', error);
             return null;
         }
     },
 
-    // Create menu item
     async create(item) {
         try {
-            const [result] = await pool.query(
-                'INSERT INTO menu (name, price, description, category, tags, image) VALUES (?, ?, ?, ?, ?, ?)',
+            const result = await pool.query(
+                'INSERT INTO menu (name, price, description, category, tags, image) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *',
                 [item.name, item.price, item.description, item.category, item.tags, item.image]
             );
-            return { id: result.insertId, ...item };
+            return result.rows[0];
         } catch (error) {
             console.error('Error creating menu item:', error);
             return null;
         }
     },
 
-    // Update menu item
     async update(id, item) {
         try {
-            const [result] = await pool.query(
-                'UPDATE menu SET name = ?, price = ?, description = ?, category = ?, tags = ?, image = ? WHERE id = ?',
+            const result = await pool.query(
+                'UPDATE menu SET name = $1, price = $2, description = $3, category = $4, tags = $5, image = $6 WHERE id = $7',
                 [item.name, item.price, item.description, item.category, item.tags, item.image, id]
             );
-            return result.affectedRows > 0;
+            return result.rowCount > 0;
         } catch (error) {
             console.error('Error updating menu item:', error);
             return false;
         }
     },
 
-    // Delete menu item
     async delete(id) {
         try {
-            const [result] = await pool.query('DELETE FROM menu WHERE id = ?', [id]);
-            return result.affectedRows > 0;
+            const result = await pool.query('DELETE FROM menu WHERE id = $1', [id]);
+            return result.rowCount > 0;
         } catch (error) {
             console.error('Error deleting menu item:', error);
             return false;

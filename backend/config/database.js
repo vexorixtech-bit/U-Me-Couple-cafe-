@@ -1,26 +1,22 @@
 // ============================================
-// VICKY RESTAURANT - DATABASE CONFIG
+// VICKY RESTAURANT - DATABASE CONFIG (PostgreSQL)
 // ============================================
 
-const mysql = require('mysql2/promise');
+const { Pool } = require('pg');
 
-const pool = mysql.createPool({
-    host: process.env.DB_HOST || 'localhost',
-    port: process.env.DB_PORT || 3306,
-    user: process.env.DB_USER || 'root',
-    password: process.env.DB_PASSWORD || 'Vignesh@1620',
-    database: process.env.DB_NAME || 'vicky_restaurant',
-    waitForConnections: true,
-    connectionLimit: 10,
-    queueLimit: 0
+const pool = new Pool({
+    connectionString: process.env.DB_URL,
+    ssl: {
+        rejectUnauthorized: false
+    }
 });
 
 // Test connection
 const testConnection = async () => {
     try {
-        const connection = await pool.getConnection();
+        const client = await pool.connect();
         console.log('✅ Database connected successfully!');
-        connection.release();
+        client.release();
         return true;
     } catch (error) {
         console.error('❌ Database connection failed:', error.message);
