@@ -2,8 +2,8 @@
 // VICKY RESTAURANT - DATA (Supabase Direct)
 // ============================================
 
-const SUPABASE_URL = 'https://ioflptnuwifbevsggete.supabase.co';
-const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImlvZmxwdG51d2lmYmV2c2dnZXRlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzYzMjgwNjcsImV4cCI6MjA5MTkwNDA2N30.TCAUT4AbzYIVX6ePEM7jGse2hw1DGsiTvSDRqfmquyU';
+const SUPABASE_URL = 'https://nhonnpgddaeapesvvngt.supabase.co';
+const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5ob25ucGdkZGFlYXBlc3Z2bmd0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzYzNDI2MDMsImV4cCI6MjA5MTkxODYwM30.rhi2RDxm77OfEPw-CJj-Nna9lecEbZkifyZLc1EUdT4';
 
 let menuData = [];
 
