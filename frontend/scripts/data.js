@@ -2,7 +2,7 @@
 // VICKY RESTAURANT - DATA (From Database)
 // ============================================
 
-const API_BASE = 'http://localhost:5000/api';
+const API_BASE = 'https://restaurant-project-qtrz.onrender.com/api';
 
 // Menu Data
 let menuData = [];
