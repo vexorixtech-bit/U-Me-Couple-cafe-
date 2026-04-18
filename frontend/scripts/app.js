@@ -38,7 +38,6 @@ const App = () => {
             <About />
             <Banner />
             <Menu />
-            <Specialties />
             <Gallery />
             <Reservation />
             <Testimonials />

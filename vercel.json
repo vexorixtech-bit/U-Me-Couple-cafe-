@@ -1,0 +1,9 @@
+{
+  "buildCommand": "echo Static",
+  "outputDirectory": ".",
+  "installCommand": "echo Install",
+  "publicDirectory": ".",
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
+}

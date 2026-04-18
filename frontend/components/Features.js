@@ -12,13 +12,13 @@ const Features = () => {
             </div>
             <div className="feature-item">
                 <i className="fas fa-leaf"></i>
-                <h4>100% Vegan</h4>
-                <p>Pure vegetarian delights</p>
+                <h4>100% Veg&Non-Veg</h4>
+                <p>Veg&Non-Veg delights</p>
             </div>
             <div className="feature-item">
                 <i className="fas fa-motorcycle"></i>
                 <h4>Free Delivery</h4>
-                <p>On orders above $20</p>
+                <p>On orders above ₹300</p>
             </div>
             <div className="feature-item">
                 <i className="fas fa-star"></i>

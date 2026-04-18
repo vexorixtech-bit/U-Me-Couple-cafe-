@@ -37,17 +37,17 @@ const Footer = () => {
                 <div className="footer-grid">
                     <div className="footer-brand">
                         <a href="#home" className="logo">
-                            <img src="frontend/images/vexorix.png" alt="Vicky Logo" className="logo-img" />
+                            <img src="frontend/images/u and me.jpeg" alt="Vicky Logo" className="logo-img" />
                             <span className="logo-text">
-                                <span className="logo-name">VICKY</span>
-                                <span className="logo-tagline">RESTAURANT</span>
+                                <span className="logo-name">U&Me</span>
+                                <span className="logo-tagline">Couple Cafe</span>
                             </span>
                         </a>
-                        <p>Your 24-hour destination for authentic Indian cuisine. Pure vegetarian. Pure flavor. Pure love.</p>
+                        <p>Your 24-hour destination for authentic Indian cuisine. Veg & Non-Veg. Pure flavor. Pure love.</p>
                         <div className="footer-contact">
                             <a href="mailto:vicky@restaurant.com" className="footer-email">
                                 <i className="fas fa-envelope"></i>
-                                vicky@restaurant.com
+                                u&me@couplecafe.com
                             </a>
                         </div>
                     </div>
@@ -82,7 +82,7 @@ const Footer = () => {
                     </div>
                 </div>
                 <div className="footer-bottom">
-                    <p>&copy; 2026 U & Me Restaurant. All Rights Reserved. | <a href="mailto:cvvignesh1620@gmail.com">cvvignesh1620@gmail.com</a></p>
+                    <p>&copy; 2026 U & Me Couple Cafe. All Rights Reserved. | <a href="mailto:cvvignesh1620@gmail.com">cvvignesh1620@gmail.com</a></p>
                 </div>
             </footer>
 

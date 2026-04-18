@@ -44,8 +44,8 @@ const Contact = () => {
             </div>
             <div className="contact-wrapper">
                 <div className="contact-info">
-                    <h3>Visit Vicky</h3>
-                    <p>Come experience the authentic taste of India. We're open 24 hours, 7 days a week to serve you the best vegan Indian cuisine.</p>
+                    <h3>Visit U&Me Couple Cafe</h3>
+                    <p>Come experience the authentic taste of India. We're open 24 hours, 7 days a week to serve you the best Veg & Non-Veg Indian cuisine.</p>
                     
                     <div className="contact-card">
                         <i className="fas fa-map-marker-alt"></i>
@@ -59,7 +59,7 @@ const Contact = () => {
                         <i className="fas fa-phone"></i>
                         <div>
                             <h4>Call Us</h4>
-                            <p>+1 (555) 123-4567</p>
+                            <p>+91 9655058949</p>
                         </div>
                     </div>
                     
@@ -67,7 +67,7 @@ const Contact = () => {
                         <i className="fas fa-envelope"></i>
                         <div>
                             <h4>Email Us</h4>
-                            <p>hello@vickyrestaurant.com</p>
+                            <p>u&mecouplecafe@gmail .com</p>
                         </div>
                     </div>
                     

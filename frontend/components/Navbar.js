@@ -19,13 +19,13 @@ const Navbar = () => {
     return (
         <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
             <a href="#home" className="logo">
-                <img src="frontend/images/vexorix.png" alt="Vicky Logo" className="logo-img" />
+                <img src="frontend/images/u and me.jpeg" alt="Vicky Logo" className="logo-img" />
                 
                 <span className="logo-text">
                     <span className="logo-name">U & Me</span>
-                    <span className="logo-tagline">RESTAURANT</span>
+                    <span className="logo-tagline">Couple Cafe</span>
                 </span>
-            </a>`
+            </a>
             <ul className={`nav-links ${mobileMenuOpen ? 'active' : ''}`}>
                 <li><a href="#home" onClick={() => setMobileMenuOpen(false)}>Home</a></li>
                 <li><a href="#about" onClick={() => setMobileMenuOpen(false)}>About</a></li>
