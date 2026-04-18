@@ -1,0 +1,30 @@
+// ============================================
+// VICKY RESTAURANT - DATABASE CONFIG (MySQL)
+// ============================================
+
+const mysql = require('mysql2/promise');
+
+const pool = mysql.createPool({
+    host: 'localhost',
+    port: 3306,
+    user: 'root',
+    password: 'Vignesh@1620',
+    database: 'vicky_restaurant',
+    waitForConnections: true,
+    connectionLimit: 10,
+    queueLimit: 0
+});
+
+const testConnection = async () => {
+    try {
+        const connection = await pool.getConnection();
+        console.log('✅ Database connected successfully!');
+        connection.release();
+        return true;
+    } catch (error) {
+        console.error('❌ Database connection failed:', error.message);
+        return false;
+    }
+};
+
+module.exports = { pool, testConnection };
