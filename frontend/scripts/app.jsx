@@ -73,6 +73,7 @@ const App = () => {
             <Testimonials />
             <Contact />
             <Footer />
+            <WhatsApp />
         </div>
     );
 };
