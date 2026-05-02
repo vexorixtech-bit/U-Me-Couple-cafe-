@@ -7,7 +7,7 @@ function Navbar() {
     <nav className="bg-white shadow-lg fixed w-full z-50">
       <div className="container mx-auto px-4 py-3 flex justify-between items-center">
         <Link to="/" className="flex items-center gap-2">
-          <img src="/u-me-logo.png" alt="U & Me" className="h-12 w-auto" />
+          <img src="/favicon.jpeg" alt="U & Me" className="h-12 w-auto" />
           <span className="text-2xl font-bold text-primary">U & Me</span>
           <span className="text-sm text-dark">Couple Cafe</span>
         </Link>

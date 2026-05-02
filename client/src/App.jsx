@@ -11,7 +11,7 @@ import './index.css'
 function App() {
   return (
     <BrowserRouter>
-      <div className="min-h-screen bg-light">
+      <div className="min-h-screen" style={{ backgroundColor: '#FFF5F5' }}>
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
