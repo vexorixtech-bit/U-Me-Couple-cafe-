@@ -1,5 +1,5 @@
 // ============================================
-// VICKY RESTAURANT - CONTACT MODEL (PostgreSQL)
+// U&ME COUPLE CAFE - CONTACT MODEL (MySQL)
 // ============================================
 
 const { pool } = require('../config/database');
@@ -7,10 +7,10 @@ const { pool } = require('../config/database');
 const ContactModel = {
     async getAll() {
         try {
-            const result = await pool.query(
+            const [rows] = await pool.query(
                 'SELECT * FROM contacts ORDER BY created_at DESC'
             );
-            return result.rows;
+            return rows;
         } catch (error) {
             console.error('Error fetching contacts:', error);
             return [];
@@ -19,11 +19,11 @@ const ContactModel = {
 
     async getById(id) {
         try {
-            const result = await pool.query(
-                'SELECT * FROM contacts WHERE id = $1',
+            const [rows] = await pool.query(
+                'SELECT * FROM contacts WHERE id = ?',
                 [id]
             );
-            return result.rows[0];
+            return rows[0];
         } catch (error) {
             console.error('Error fetching contact:', error);
             return null;
@@ -32,9 +32,9 @@ const ContactModel = {
 
     async create(contact) {
         try {
-            const result = await pool.query(
+            const [result] = await pool.query(
                 `INSERT INTO contacts (name, email, subject, message, status) 
-                 VALUES ($1, $2, $3, $4, 'unread') RETURNING *`,
+                 VALUES (?, ?, ?, ?, 'unread')`,
                 [
                     contact.name,
                     contact.email,
@@ -42,7 +42,7 @@ const ContactModel = {
                     contact.message
                 ]
             );
-            return result.rows[0];
+            return { id: result.insertId, ...contact, status: 'unread' };
         } catch (error) {
             console.error('Error creating contact:', error);
             return null;
@@ -51,11 +51,11 @@ const ContactModel = {
 
     async markAsRead(id) {
         try {
-            const result = await pool.query(
-                'UPDATE contacts SET status = $1 WHERE id = $2',
+            const [result] = await pool.query(
+                'UPDATE contacts SET status = ? WHERE id = ?',
                 ['read', id]
             );
-            return result.rowCount > 0;
+            return result.affectedRows > 0;
         } catch (error) {
             console.error('Error marking contact as read:', error);
             return false;
@@ -64,11 +64,11 @@ const ContactModel = {
 
     async delete(id) {
         try {
-            const result = await pool.query(
-                'DELETE FROM contacts WHERE id = $1',
+            const [result] = await pool.query(
+                'DELETE FROM contacts WHERE id = ?',
                 [id]
             );
-            return result.rowCount > 0;
+            return result.affectedRows > 0;
         } catch (error) {
             console.error('Error deleting contact:', error);
             return false;

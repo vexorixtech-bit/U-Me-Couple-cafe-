@@ -1,5 +1,5 @@
 // ============================================
-// VICKY RESTAURANT - RESERVATION MODEL (PostgreSQL)
+// VICKY RESTAURANT - RESERVATION MODEL (MySQL)
 // ============================================
 
 const { pool } = require('../config/database');
@@ -7,10 +7,10 @@ const { pool } = require('../config/database');
 const ReservationModel = {
     async getAll() {
         try {
-            const result = await pool.query(
+            const [rows] = await pool.query(
                 'SELECT * FROM reservations ORDER BY date DESC, time DESC'
             );
-            return result.rows;
+            return rows;
         } catch (error) {
             console.error('Error fetching reservations:', error);
             return [];
@@ -19,11 +19,11 @@ const ReservationModel = {
 
     async getById(id) {
         try {
-            const result = await pool.query(
-                'SELECT * FROM reservations WHERE id = $1',
+            const [rows] = await pool.query(
+                'SELECT * FROM reservations WHERE id = ?',
                 [id]
             );
-            return result.rows[0];
+            return rows[0];
         } catch (error) {
             console.error('Error fetching reservation:', error);
             return null;
@@ -32,9 +32,9 @@ const ReservationModel = {
 
     async create(reservation) {
         try {
-            const result = await pool.query(
+            const [result] = await pool.query(
                 `INSERT INTO reservations (name, email, phone, date, time, guests, message, status) 
-                 VALUES ($1, $2, $3, $4, $5, $6, $7, 'pending') RETURNING *`,
+                 VALUES (?, ?, ?, ?, ?, ?, ?, 'pending')`,
                 [
                     reservation.name,
                     reservation.email,
@@ -45,7 +45,7 @@ const ReservationModel = {
                     reservation.message || ''
                 ]
             );
-            return result.rows[0];
+            return { id: result.insertId, ...reservation, status: 'pending' };
         } catch (error) {
             console.error('Error creating reservation:', error);
             return null;
@@ -54,11 +54,11 @@ const ReservationModel = {
 
     async updateStatus(id, status) {
         try {
-            const result = await pool.query(
-                'UPDATE reservations SET status = $1 WHERE id = $2',
+            const [result] = await pool.query(
+                'UPDATE reservations SET status = ? WHERE id = ?',
                 [status, id]
             );
-            return result.rowCount > 0;
+            return result.affectedRows > 0;
         } catch (error) {
             console.error('Error updating reservation status:', error);
             return false;
@@ -67,11 +67,11 @@ const ReservationModel = {
 
     async delete(id) {
         try {
-            const result = await pool.query(
-                'DELETE FROM reservations WHERE id = $1',
+            const [result] = await pool.query(
+                'DELETE FROM reservations WHERE id = ?',
                 [id]
             );
-            return result.rowCount > 0;
+            return result.affectedRows > 0;
         } catch (error) {
             console.error('Error deleting reservation:', error);
             return false;

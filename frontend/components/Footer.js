@@ -45,7 +45,7 @@ const Footer = () => {
                         </a>
                         <p>Your 24-hour destination for authentic Indian cuisine. Veg & Non-Veg. Pure flavor. Pure love.</p>
                         <div className="footer-contact">
-                            <a href="mailto:vicky@restaurant.com" className="footer-email">
+                            <a href="mailto:ume@couplecafe.com" className="footer-email">
                                 <i className="fas fa-envelope"></i>
                                 u&me@couplecafe.com
                             </a>

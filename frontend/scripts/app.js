@@ -1,5 +1,5 @@
 // ============================================
-// VICKY RESTAURANT - MAIN APP COMPONENT
+// U&ME COUPLE CAFE - MAIN APP COMPONENT
 // ============================================
 
 const { useState, useEffect } = React;
@@ -23,7 +23,7 @@ const App = () => {
         return (
             <div className="preloader">
                 <div className="preloader-content">
-                    <h1>Vicky</h1>
+                    <h1>U&Me</h1>
                     <div className="spinner"></div>
                 </div>
             </div>
