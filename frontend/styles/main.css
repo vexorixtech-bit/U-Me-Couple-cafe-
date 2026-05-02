@@ -1254,6 +1254,30 @@ footer {
     box-shadow: 0 10px 30px rgba(37, 211, 102, 0.5);
 }
 
+/* Call Float */
+.call-float {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background: #FF6B6B;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 30px;
+    z-index: 999;
+    box-shadow: 0 5px 20px rgba(255, 107, 107, 0.4);
+    transition: all 0.3s;
+}
+
+.call-float:hover {
+    transform: scale(1.1);
+    box-shadow: 0 10px 30px rgba(255, 107, 107, 0.5);
+}
+
 /* ============================================
    RESPONSIVE STYLES
    ============================================ */
@@ -1425,24 +1449,9 @@ footer {
     }
     
     .call-float {
-        width: 60px;
-        height: 60px;
-        background: #FF6B6B;
-        color: #ffffff;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 50%;
-        font-size: 30px;
-        z-index: 999;
-        box-shadow: 0 5px 20px rgba(255, 107, 107, 0.4);
-        transition: all 0.3s;
+        width: 55px;
+        height: 55px;
+        font-size: 28px;
         bottom: 100px;
-        right: 30px;
-    }
-    
-    .call-float:hover {
-        transform: scale(1.1);
-        box-shadow: 0 10px 30px rgba(255, 107, 107, 0.5);
     }
 }
