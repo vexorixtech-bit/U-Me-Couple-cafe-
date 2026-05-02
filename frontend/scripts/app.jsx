@@ -74,6 +74,7 @@ const App = () => {
             <Contact />
             <Footer />
             <WhatsApp />
+            <CallFloat />
         </div>
     );
 };

@@ -1423,4 +1423,13 @@ footer {
         height: 55px;
         font-size: 28px;
     }
+    
+    .call-float {
+        width: 55px;
+        height: 55px;
+        font-size: 24px;
+        bottom: 100px;
+        right: 30px;
+        background: #FF6B6B;
+    }
 }
