@@ -3,7 +3,7 @@
 // ============================================
 
 const Reservation = () => {
-    const handleSubmit = async (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
         
         const formData = {
@@ -16,26 +16,10 @@ const Reservation = () => {
             message: e.target.message.value
         };
         
-        try {
-            const response = await fetch('http://localhost:5000/api/reservations', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(formData)
-            });
-            
-            const result = await response.json();
-            
-            if (result.success) {
-                alert('✅ Thank you for your reservation at Vicky! We will confirm your booking shortly via email.');
-                e.target.reset();
-            } else {
-                alert('❌ Reservation failed. Please try again or call us directly.');
-            }
-        } catch (error) {
-            console.error('Error:', error);
-            alert('✅ Thank you for your reservation! (Offline mode - we will contact you soon)');
-            e.target.reset();
-        }
+        // Demo mode - no backend call
+        console.log('Reservation form submitted (demo mode):', formData);
+        alert('✅ Thank you for your reservation! We will confirm your booking shortly.');
+        e.target.reset();
     };
 
     return (

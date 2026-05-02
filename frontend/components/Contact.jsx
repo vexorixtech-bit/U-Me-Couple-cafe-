@@ -3,7 +3,7 @@
 // ============================================
 
 const Contact = () => {
-    const handleSubmit = async (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
         
         const formData = {
@@ -13,26 +13,10 @@ const Contact = () => {
             message: e.target.message.value
         };
         
-        try {
-            const response = await fetch('http://localhost:5000/api/contacts', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(formData)
-            });
-            
-            const result = await response.json();
-            
-            if (result.success) {
-                alert('✅ Thank you for your message! We will get back to you soon.');
-                e.target.reset();
-            } else {
-                alert('❌ Failed to send message. Please try again.');
-            }
-        } catch (error) {
-            console.error('Error:', error);
-            alert('✅ Thank you for your message! (Offline mode - we will contact you soon)');
-            e.target.reset();
-        }
+        // Demo mode - no backend call
+        console.log('Contact form submitted (demo mode):', formData);
+        alert('✅ Thank you for your message! We will get back to you soon.');
+        e.target.reset();
     };
 
     return (
