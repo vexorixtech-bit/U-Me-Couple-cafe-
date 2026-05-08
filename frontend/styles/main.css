@@ -1052,24 +1052,23 @@ section {
 
 /* Map Section */
 .map-section {
-    height: 400px;
     background: #333;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    padding: 30px 20px 0;
     color: var(--white);
     text-align: center;
 }
 
 .map-section i {
-    font-size: 60px;
+    font-size: 40px;
     color: var(--gold);
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
-.map-section p {
-    font-size: 18px;
-    opacity: 0.8;
+.map-section iframe {
+    display: block;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 /* Footer */

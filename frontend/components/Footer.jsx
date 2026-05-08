@@ -26,8 +26,17 @@ const Footer = () => {
                 <div>
                     <i className="fas fa-map-marked-alt"></i>
                     <h3>Find Us Here</h3>
-                    <p>123 Main Street, Downtown, City</p>
                 </div>
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.83543450937!2d144.9537353153167!3d-37.81627997975159!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad65d5df1f5a2f1%3A0x5045675218ce6e0!2sMelbourne%20VIC%2C%20Australia!5e0!3m2!1sen!2s!4v1"
+                    width="100%" 
+                    height="300" 
+                    style={{border: 0, borderRadius: '12px'}} 
+                    allowFullScreen="" 
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    title="Restaurant Location"
+                ></iframe>
             </div>
 
             {/* Footer */}
