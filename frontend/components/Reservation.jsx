@@ -26,7 +26,7 @@ const Reservation = () => {
         <section className="reservation" id="reservation">
             <div className="section-header">
                 <p className="section-subtitle">Book Your Table</p>
-                <h2 className="section-title" style={{color: '#2D1B69'}}>Make a Reservation</h2>
+                <h2 className="section-title" style={{color: '#FF6B6B'}}>Make a Reservation</h2>
                 <div className="section-line"></div>
             </div>
             <form className="reservation-form" onSubmit={handleSubmit}>
