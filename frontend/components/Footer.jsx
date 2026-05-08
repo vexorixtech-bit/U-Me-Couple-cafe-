@@ -72,7 +72,7 @@ const Footer = () => {
                     </div>
                 </div>
                 <div className="footer-bottom">
-                    <p>&copy; 2026 U & Me Couple Cafe. All Rights Reserved. | <a href="mailto:cvvignesh1620@gmail.com">cvvignesh1620@gmail.com</a></p>
+                    <p>&copy; 2026 U & Me Couple Cafe. All Rights Reserved. | <a href="mailto:Vexorix.tech@gmail.com">Vexorix.tech@gmail.com</a></p>
                 </div>
             </footer>
 
