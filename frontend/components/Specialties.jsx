@@ -10,13 +10,7 @@ const Specialties = () => {
             title: 'Traditional Recipes',
             desc: 'Authentic Indian recipes passed down through generations'
         },
-        {
-            image: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=600',
-            icon: 'fa-clock',
-            title: '24/7 Service',
-            desc: 'Open round the clock for your every craving'
-        },
-        {
+{
             image: 'https://images.unsplash.com/photo-1606923829579-0cb981a83e2e?w=600',
             icon: 'fa-leaf',
             title: '100% Plant-Based',

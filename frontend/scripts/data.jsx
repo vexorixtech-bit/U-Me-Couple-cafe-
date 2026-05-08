@@ -5,10 +5,10 @@
 let menuData = [];
 
 const testimonialsData = [
-    { id: 1, text: 'Best Indian food ever! Paneer Butter Masala amazing. 24/7 open-ga midnight cravings satisfy pannum!', name: 'Priya Sharma', role: 'Food Blogger', image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150' },
+    { id: 1, text: 'Best Indian food ever! Paneer Butter Masala amazing. Late night cravings satisfy pannum!', name: 'Priya Sharma', role: 'Food Blogger', image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150' },
     { id: 2, text: 'Authentic veg cuisine! Dal Makhana my grandma recipe mothaali. Super love!', name: 'Raj Patel', role: 'Regular Customer', image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150' },
     { id: 3, text: 'Non-veg-aan converting! Ennayum fresh and flavorful. Night shift workers-ga perfect!', name: 'Saravana', role: 'Local Resident', image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150' },
-    { id: 4, text: 'Tandoori Chicken motham! 24/7 open-ga late night-ga foodOrder pannalam. Super!', name: 'Kumar R', role: 'Software Engineer', image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150' },
+    { id: 4, text: 'Tandoori Chicken motham! Late night-ga foodOrder pannalam. Super!', name: 'Kumar R', role: 'Software Engineer', image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150' },
     { id: 5, text: 'Best biryani in town! Ambience-ga paathuka. Definitely revisit pannalam!', name: 'Anbu Selvan', role: 'Business', image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150' },
 ];
 

@@ -24,10 +24,6 @@ const About = () => {
                             <div className="stat-number">50+</div>
                             <div className="stat-label">Menu Items</div>
                         </div>
-                        <div className="stat-item">
-                            <div className="stat-number">24/7</div>
-                            <div className="stat-label">Always Open</div>
-                        </div>
                     </div>
                 </div>
             </div>
