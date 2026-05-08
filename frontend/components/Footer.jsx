@@ -19,8 +19,6 @@ const Footer = () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     };
 
-    const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
-
     return (
         <>
             {/* Map Section */}
@@ -70,14 +68,6 @@ const Footer = () => {
                             <li><a href="#menu">Breads & Naan</a></li>
                             <li><a href="#menu">Desserts</a></li>
                             <li><a href="#menu">Beverages</a></li>
-                        </ul>
-                    </div>
-                    <div className="footer-col">
-                        <h4>Opening Hours</h4>
-                        <ul className="footer-hours">
-                            {days.map(day => (
-                                <li key={day}><span>{day}</span><span>9AM - 10PM</span></li>
-                            ))}
                         </ul>
                     </div>
                 </div>

@@ -55,14 +55,6 @@ const Contact = () => {
                         </div>
                     </div>
                     
-                    <div className="contact-card">
-                        <i className="fas fa-clock"></i>
-                        <div>
-                            <h4>Opening Hours</h4>
-                            <p>Monday - Sunday<br />9:00 AM - 10:00 PM</p>
-                        </div>
-                    </div>
-
                     <div className="social-links">
                         <a href="#"><i className="fab fa-facebook-f"></i></a>
                         <a href="#"><i className="fab fa-instagram"></i></a>
