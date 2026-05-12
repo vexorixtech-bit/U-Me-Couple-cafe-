@@ -20,7 +20,7 @@ const Contact = () => {
     };
 
     return (
-        <section className="contact" id="contact">
+        <section className="contact animate-on-scroll" id="contact">
             <div className="section-header">
                 <p className="section-subtitle">Get in Touch</p>
                 <h2 className="section-title">Contact Us</h2>

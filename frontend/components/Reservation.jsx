@@ -23,7 +23,7 @@ const Reservation = () => {
     };
 
     return (
-        <section className="reservation" id="reservation">
+        <section className="reservation animate-on-scroll" id="reservation">
             <div className="section-header">
                 <p className="section-subtitle">Book Your Table</p>
                 <h2 className="section-title" style={{color: '#FF6B6B'}}>Make a Reservation</h2>

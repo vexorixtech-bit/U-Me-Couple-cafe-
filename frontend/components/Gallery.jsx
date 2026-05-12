@@ -4,7 +4,7 @@
 
 const Gallery = () => {
     return (
-        <section className="gallery" id="gallery">
+        <section className="gallery animate-on-scroll" id="gallery">
             <div className="section-header">
                 <p className="section-subtitle">Visual Delight</p>
                 <h2 className="section-title">Gallery</h2>

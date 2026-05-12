@@ -4,7 +4,7 @@
 
 const Hero = () => {
     return (
-        <section className="hero" id="home">
+        <section className="hero animate-on-scroll animate-scale" id="home">
             <div className="hero-content">
                 <div className="hero-badge">
                     <i className="fas fa-leaf"></i>

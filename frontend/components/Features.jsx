@@ -4,7 +4,7 @@
 
 const Features = () => {
     return (
-        <div className="features-bar">
+        <div className="features-bar animate-on-scroll">
             <div className="feature-item">
                 <i className="fas fa-clock"></i>
                 <h4>24 Hours Open</h4>

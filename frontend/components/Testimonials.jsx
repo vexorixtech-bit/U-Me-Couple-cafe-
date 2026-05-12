@@ -15,7 +15,7 @@ const Testimonials = () => {
     }, []);
 
     return (
-        <section className="testimonials">
+        <section className="testimonials animate-on-scroll">
             <div className="section-header">
                 <p className="section-subtitle">What People Say</p>
                 <h2 className="section-title">Customer Reviews</h2>

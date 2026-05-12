@@ -4,7 +4,7 @@
 
 const About = () => {
     return (
-        <section className="about" id="about">
+        <section className="about animate-on-scroll" id="about">
             <div className="about-grid">
                 <div className="about-images">
                     <img src="https://images.unsplash.com/photo-1567337710282-00832b415979?w=800" alt="Indian Food" />

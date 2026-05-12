@@ -48,7 +48,7 @@ const Menu = () => {
         : menuItems.filter(item => item.category === activeCategory);
 
     return (
-        <section className="menu" id="menu">
+        <section className="menu animate-on-scroll" id="menu">
             <div className="section-header">
                 <p className="section-subtitle">Taste the Tradition</p>
                 <h2 className="section-title">Our Menu</h2>

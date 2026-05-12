@@ -19,7 +19,7 @@ const Specialties = () => {
     ];
 
     return (
-        <section className="specialties" id="specialties">
+        <section className="specialties animate-on-scroll" id="specialties">
             <div className="section-header">
                 <p className="section-subtitle">What We Offer</p>
                 <h2 className="section-title">Our Specialties</h2>
