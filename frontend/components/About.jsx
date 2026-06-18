@@ -10,7 +10,7 @@ const About = () => {
                     <img src="https://images.unsplash.com/photo-1567337710282-00832b415979?w=800" alt="Indian Food" />
                 </div>
                 <div className="about-content">
-                    <p className="section-subtitle">Our Story</p>
+                    <p className="section-subtitle"></p>
                     <h2>A Legacy of <span className="highlight">Flavor & Faith</span></h2>
                     <p>Welcome to U&Me - your neighborhood 24-hour Veg&Non-Veg U&Me Couple Cafe. Founded with a passion for authentic Veg&Non-Veg cuisine, we bring the rich traditions of Indian cooking to your table, every hour of every day.</p>
                     <p>Every dish at U&Me Couple Cafe is prepared with fresh, locally-sourced ingredients and traditional spices imported directly from India. Our recipes have been passed down through generations, ensuring authentic taste in every bite.</p>
